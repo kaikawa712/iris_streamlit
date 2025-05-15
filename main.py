@@ -24,11 +24,5 @@ async def index():
 # POST が送信された時（入力）と予測値（出力）の定義
 @app.post('/predict')
 async def predict(features: iris):
-    pred = model.predict([[
-        features.sepal_length,
-        features.sepal_width,
-        features.petal_length,
-        features.petal_width
-    ]])[0]
-    return {"prediction": int(pred)}  # ← 数値として返す方が扱いやすい
+    return({'prediction':str(model.predict([[features.sepal_length, features.sepal_width, features.petal_length, features.petal_width]])[0])})
 
