@@ -26,7 +26,7 @@ if st.sidebar.button("Predict"):
     st.write(iris_df)
 
     # 予測の実行
-    response = requests.post("http://localhost:8000/predict", json=iris)
+    response = requests.post("https://iris-streamlit-qsnd.onrender.com/predict", json=iris)
     prediction = response.json()["prediction"]
 
     # 予測結果の表示
@@ -36,3 +36,7 @@ if st.sidebar.button("Predict"):
     # 予測結果の出力
     st.write('## Result')
     st.write('このアイリスはきっと',str(targets[int(prediction)]),'です!')
+
+
+    # uvicorn main:app --reload
+    # streamlit run iris.py　の2件別ターミナルで実行
